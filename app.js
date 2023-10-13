@@ -1,15 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 
-app.use(express.json());
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.json());
+
 require('dotenv').config();
 
+app.use(express.static('./public'));
+
+app.set('view engine', 'ejs');
+
 const authRouter = require('./routes/auth'); 
+const blogRouter = require('./routes/blog');
 
 app.use('/api/auth', authRouter);
-//app.use('/api/blog', blog);
+app.use('/api/blog', blogRouter);
 
 const port = process.env.PORT || 5000;
 
