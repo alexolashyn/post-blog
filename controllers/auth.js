@@ -10,9 +10,9 @@ const signUp = async (req, res) => {
         if (error.name === 'ValidationError') {
             const validationErrors = {};
             for (const field in error.errors) {
-              validationErrors[field] = error.errors[field].message;
+                validationErrors[field] = error.errors[field].message;
             }
-            res.status(401).json({message: validationErrors});
+            res.status(401).json({ message: validationErrors });
             return;
         }
 
@@ -42,13 +42,20 @@ const login = async (req, res) => {
 
         const token = user.createJWT();
         res.status(200).json({ user: { username: user.username }, token: token });
+        
     }
     catch (error) {
         res.status(500).json({ message: error });
     }
 }
 
+const loginView = (req, res) => {
+    res.render("auth", {});
+};
+
+
 module.exports = {
     login,
+    loginView,
     signUp,
 }

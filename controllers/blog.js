@@ -31,7 +31,7 @@ const viewAllPosts = async (req, res) => {
             description: post.description,
             owner: post.owner
         }));
-        res.status(200).render('all-posts', {resPosts});
+        res.render('all-posts', {resPosts});
         return;
     }
     catch (error) {

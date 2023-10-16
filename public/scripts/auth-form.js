@@ -20,23 +20,10 @@ $(document).ready(function () {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: '/api/auth/login',
+      url: '/auth/login',
       data: $(this).serialize(),
       success: function (response) {
-        $.ajax({
-          type: 'GET',
-          url: '/api/blog/view-posts', 
-          headers: {
-            'Authorization': 'Bearer ' + response.token,
-            'Content-Type': 'application/json'
-          },
-          success: function (data) {
-            $('html').html(data); //тут воно просто переписує сторінку, а мені треба переадресуватися
-          },
-          error: function (error) {
-            console.error(error);
-          }
-        });
+        window.location.replace('/v1/test');
       },
       error: function (error) {
         const errorMessage = JSON.parse(error.responseText).message;
@@ -50,7 +37,7 @@ $(document).ready(function () {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: '/api/auth/sign-up',
+      url: '/auth/sign-up',
       data: $(this).serialize(),
       success: function (response) {
         $.ajax({

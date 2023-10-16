@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Login/Sign Up</title>
-    <link rel="stylesheet" href="./styles/auth-form.css">
-</head>
-<body>
+<%- include('layout.ejs'); %>
     <div class="container">
         <form class="form" id="login">
             <h1 class="form__title">Login</h1>
@@ -25,7 +17,8 @@
         <form class="form form--hidden" id="createAccount">
             <h1 class="form__title">Create Account</h1>
             <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" name="username" autofocus placeholder="Username">
+                <input type="text" id="signupUsername" class="form__input" name="username" autofocus
+                    placeholder="Username">
             </div>
             <div class="form__input-group">
                 <input type="text" class="form__input" name="email" autofocus placeholder="Email Address">
@@ -40,7 +33,7 @@
             </p>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./scripts/auth-form.js"></script>
-</body>
-</html>
+    <%- include('scripts.ejs') %>
+    </body>
+
+    </html>

@@ -11,12 +11,15 @@ require('dotenv').config();
 app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
+app.set('views', './views')
 
 const authRouter = require('./routes/auth'); 
 const blogRouter = require('./routes/blog');
+const test = require('./routes/test');
 
-app.use('/api/auth', authRouter);
-app.use('/api/blog', blogRouter);
+app.use('/auth', authRouter);
+app.use('/blog', blogRouter);
+app.use('/v1', test)
 
 const port = process.env.PORT || 5000;
 
