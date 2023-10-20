@@ -11,11 +11,9 @@ require('dotenv').config();
 app.use(cookieParser());
 
 const authRouter = require('./routes/auth'); 
-const testRouter = require('./routes/test');
 const blogRouter = require('./routes/blog')
 
 app.use('/api/auth', authRouter);
-app.use('/api', testRouter);
 app.use('/api/blog', blogRouter);
 
 const port = process.env.PORT || 5000;

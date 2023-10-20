@@ -1,6 +1,6 @@
 const User = require('../models/user.js');
 
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
     try {
         const user = await User.create({ ...req.body });
         const token = user.createJWT();
@@ -8,14 +8,10 @@ const signUp = async (req, res) => {
     }
     catch (error) {
         if (error.name === 'ValidationError') {
-            const validationErrors = {};
-            for (const field in error.errors) {
-                validationErrors[field] = error.errors[field].message;
-            }
-            res.status(401).json({ message: validationErrors });
-            return;
+            req.validErrors = { errors: error.errors };
+            return next();
         }
-
+        
         res.status(500).json({ message: error });
     }
 }
