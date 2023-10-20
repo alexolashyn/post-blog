@@ -1,13 +1,36 @@
 <%- include('layout.ejs'); %>
-<h1>Posts</h1>
-<ul>
-    <% posts.forEach(function(post) { %>
-        <li>
-            <h2><%= post.title %></h2>
-            <p><%= post.description %></p>
-            <p>Owner: <%= post.owner %></p>
-        </li>
-    <% }); %>
-</ul>
-</body>
-</html>
+    <div class="posts-container">
+        <h1>Posts</h1>
+        <% posts.forEach(function(post) { %>
+            <div class="post-container" id="<%= post.id %>">
+                <div class="top">
+                    <div class="owner-container">
+                        Posted by: <%=post.owner %>
+                    </div>
+                    <div class="title-container">
+                        <%= post.title %>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <%= post.description %>
+                </div>
+            </div>
+            <% }); %>
+                <form class="form" id="pagination" method="get" action="/api/blog/view-posts">
+                    <input type="hidden" name="page" id="page" value="<%= selectedPage %>">
+                    <div class="navigation-button-container">
+                        <div>
+                            <button type="button" class="navigation-button" id="previous-button"><img
+                                    src="/img/previous.png" alt="Previous page"> </button>
+                        </div>
+                        <div>
+                            <button type="button" class="navigation-button" id="next-button"
+                                value="<%= allPages %>"><img src="/img/next.png" alt="Next page"></button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+    <script src="/scripts/pagination.js"></script>
+    </body>
+
+    </html>
