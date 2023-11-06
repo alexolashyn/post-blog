@@ -1,18 +1,39 @@
+.header-container {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.header-button {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    background-color: #FFF6FF;
+    border: none;
+    border-radius: 1rem;
+}
+
+.header-button-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .posts-container {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #FFF5F9;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
 }
 
@@ -21,36 +42,73 @@
 }
 
 #pagination {
-    width:80%;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    bottom: 2rem;
+    position: fixed;
 }
 
 .navigation-button-container {
+    width: 80%;
+    position: relative;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .navigation-button {
-    background-color: #FFF5F9;
+    background-color: transparent;
     border: none;
 }
 
 .owner-container {
-    color: #ED5E93;
+    color: #955C8C;
 }
 
 .description-container {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .post-container {
     width: 80%;
     border: none;
-    margin-bottom: 2rem;
-    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 1rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    background-color: #FFF6FF;
+}
+
+.post-container:hover {
+    box-shadow: 0 0 0.7rem rgba(149, 92, 140, 1);
+}
+
+.delete-update-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.delete-update-button {
+    background-color: #FFF6FF;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    border: none;
+}
+
+.delete-update-button:hover {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.header-button:hover {
+    box-shadow: 0 0 0.7rem rgba(149, 92, 140, 1);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
 }

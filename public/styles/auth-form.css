@@ -1,17 +1,19 @@
 body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    width: 100%;
     font-size: 1rem;
-    background-color: #FFF5F9;
+    background-image: linear-gradient(to right, #C5ADC5, #B2B5E0);
 }
 
 .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 31.25rem;
+    transform: translate(-50%, -50%);
     padding: 2rem;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    background: #ffffff;
+    background: #FFF6FF;
 }
 
 .container,
@@ -20,9 +22,6 @@ body {
     font: 500 1rem 'Quicksand', sans-serif;
 }
 
-.form--hidden {
-    display: none;
-}
 
 .form__title {
     color: #000000;
@@ -39,14 +38,14 @@ body {
     width: 100%;
     padding: 0.75rem;
     box-sizing: border-box;
-    border: 1px solid #FFF5F9;
+    border: 1px solid #E8DFE8;
     outline: none;
-    background: #fffdfe;
+    background: #FFF6FF;
     transition: background 0.2s, border-color 0.2s;
 }
 
 .form__input:focus {
-    border-color: #ED5E93;
+    border-color: #8D4673;
     background: #ffffff;
 }
 
@@ -66,11 +65,12 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    background: #ED5E93;
+    background: #955C8C;
+    margin-bottom: 1.5rem;
 }
 
 .form__button:hover {
-    background: #e94581;
+    background: #8D4673;
 }
 
 .form__button:active {

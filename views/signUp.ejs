@@ -1,0 +1,26 @@
+<%- include('layout.ejs'); %>
+
+    <div class="container">
+        <form class="form" id="signUp" method="post" action="/api/auth/sign-up">
+            <h1 class="form__title">Sign Up</h1>
+            <div class="form__input-group">
+                <input type="text" id="signupUsername" class="form__input" name="username" autofocus
+                    placeholder="Username">
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="email" autofocus placeholder="Email Address">
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" name="password" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a class="form__link" href="/api/auth/login" id="linkLogin">Already have an account? Sign in</a>
+            </p>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </body>
+
+    </html>

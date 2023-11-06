@@ -1,0 +1,28 @@
+<%- include('layout.ejs'); %>
+    <div class="header-container">
+        <div class="header-button-container">
+            <div class="button-group">
+                <button class="header-button" onclick="
+                    window.location.href = '/api/blog/view-posts';
+                ">
+                    All Posts
+                </button>
+                <button class="header-button create-button" id="create-button">Create Post</button>
+                <div class="modal" id="create-modal">
+                    <div class="modal-content">
+                        <div class="span-close">
+                            <span class="close" id="close-button">&times;</span>
+                        </div>
+                        <h2>Create Post</h2>
+                        <form class="form create-form" id="create-form">
+                            <input type="text" class="create-input" id="create-title-input" name="title" placeholder="Title:">
+                            <textarea class="create-input" id="create-description-input" name="description"
+                                placeholder="Description:"></textarea>
+                            <button class="create-submit-button" type="submit">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button class="header-button" id="logout-button">Logout</button>
+        </div>
+    </div>

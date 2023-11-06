@@ -1,6 +1,6 @@
 const Post = require('../models/post');
 
-const itemsOnPage = 4;
+const itemsOnPage = 5;
 
 const createPost = async (req, res, next) => {
     try {
@@ -17,7 +17,6 @@ const createPost = async (req, res, next) => {
     }
 }
 
-// /api/blog/delete-post/:id
 const deletePost = async (req, res) => {
     try {
         const id = req.params.id;
@@ -26,7 +25,7 @@ const deletePost = async (req, res) => {
             res.status(404).json({ message: 'Not found' });
             return;
         }
-        res.status(200).json({ deletedPost });
+        res.status(200).json({ deletePost });
     }
     catch (error) {
         res.status(500).json({ message: error });
@@ -48,7 +47,7 @@ const viewPosts = async (req, res) => {
         description: post.description,
         owner: post.owner === req.user.username ? 'Me' : post.owner
     }));
-    res.status(200).render('posts', { posts: posts, selectedPage: page, allPages: allPages });
+    res.status(200).render('posts', { posts: posts, selectedPage: page, allPages: allPages, username: req.user.username });
 }
 
 const viewUserPosts = async (req, res) => {
@@ -60,17 +59,38 @@ const viewUserPosts = async (req, res) => {
         description: post.description
     }));
     posts.reverse(); //add createdAt field to mongoose schema
-    res.status(200).render('my-posts', { posts });
+    res.status(200).render('user-posts', { posts });
 
 }
 
-const updatePost = (req, res) => {
+const updatePost = async (req, res, next) => {
+    try {
+        const postId = req.params.id;
+        const updatedPost = await Post.findByIdAndUpdate(
+            postId,
+            { ...req.body },
+            { new: true, runValidators: true }
+        );
 
+        if (!updatedPost) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        res.status(200).json({ updatedPost });
+        return;
+    } catch (error) {
+        if (error.name === 'ValidationError') {
+            req.validErrors = { errors: error.errors };
+            return next();
+        }
+        res.status(500).json({ message: error.message });
+    }
 
 }
 
 module.exports = {
     createPost,
     viewPosts,
-    viewUserPosts
+    viewUserPosts,
+    deletePost,
+    updatePost
 }
