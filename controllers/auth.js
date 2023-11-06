@@ -4,14 +4,14 @@ const signUp = async (req, res, next) => {
     try {
         const user = await User.create({ ...req.body });
         const token = user.createJWT();
-        res.status(200).json({ user: { username: user.username }, token: token });
+        res.cookie('jwt', token, { httpOnly: true }).redirect('/api/blog/view-posts');
     }
     catch (error) {
         if (error.name === 'ValidationError') {
             req.validErrors = { errors: error.errors };
             return next();
         }
-        
+
         res.status(500).json({ message: error });
     }
 }
@@ -47,9 +47,20 @@ const login = async (req, res) => {
 const loginView = (req, res) => {
     res.render("login", {});
 };
+const signUpView = (req, res) => {
+    res.render("signUp", {});
+};
+
+const logout = (req, res) => {
+    res.status(200)
+        .cookie('jwt', '', { httpOnly: true })
+        .redirect('/api/auth/login');
+}
 
 module.exports = {
     loginView,
     login,
     signUp,
+    logout,
+    signUpView,
 }

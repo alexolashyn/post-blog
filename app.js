@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
+const app = express();
 
-app.use(express.static('./public'));
-app.set("view engine", "ejs");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-require('dotenv').config();
 app.use(cookieParser());
+app.use(express.static('./public'));
+app.set("view engine", "ejs");
 
 const authRouter = require('./routes/auth'); 
 const blogRouter = require('./routes/blog')

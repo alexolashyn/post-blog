@@ -1,0 +1,47 @@
+<%- include('personal-header.ejs'); %>
+    <div class="posts-container">
+        <h1>My posts</h1>
+        <% posts.forEach(function(post) { %>
+            <div class="post-container" id="<%= post.id %>">
+                <div class="top">
+                    <div class="title-container">
+                        <%= post.title %>
+                    </div>
+                    <div class="delete-update-button-container">
+                        <div class="delete-container">
+                            <button class="delete-update-button delete-button" postId="<%= post.id %>">Remove</button>
+                        </div>
+                        <div class="update-container">
+                            <button class="delete-update-button update-button" postId="<%= post.id %>">Update</button>
+                            <div class="modal" id="update-modal-<%= post.id %>">
+                                <div class="modal-content">
+                                    <div class="span-close">
+                                        <span class="close" id="close-button-<%= post.id %>" postId="<%= post.id %>"
+                                            s>&times;</span>
+                                    </div>
+                                    <h2>Update Post</h2>
+                                    <form class="form update-form" postId="<%= post.id %>">
+                                        <div class="update-form-container">
+                                            <input type="text" class="update-input" value="<%= post.title %>"
+                                                name="title" placeholder="Title:">
+                                            <textarea class="update-input" name="description"
+                                                placeholder="Description:"><%= post.description %></textarea>
+                                            <button class="update-submit-button" type="submit">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <%= post.description %>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+    <script src="/scripts/content-manipulation.js"></script>
+    <script src="/scripts/logout.js"></script>
+    </body>
+
+    </html>

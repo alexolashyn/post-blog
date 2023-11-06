@@ -1,0 +1,10 @@
+<%- include('layout.ejs'); %>
+    <div class="header-container">
+        <div class="header-button-container">
+            <button class="header-button" onclick="
+                window.location.href = '/api/blog/view-user-posts';
+            ">
+                <%= username %>
+            </button>
+        </div>
+    </div>
