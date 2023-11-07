@@ -20,19 +20,19 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            res.status(401).json({ message: "Provide email and password" });
+            res.status(401).render("login", { message: "Provide email and password" });
             return;
         }
 
         const user = await User.findOne({ email: email });
         if (!user) {
-            res.status(401).json({ message: 'Incorrect email' });
+            res.status(401).render("login", { message: "Incorrect email" });
             return;
         }
 
         const isPasswordCorrect = await user.comparePassword(password)
         if (!isPasswordCorrect) {
-            res.status(401).json({ message: 'Incorrect password' });
+            res.status(401).render("login", { message: 'Incorrect password' });
             return;
         }
 
@@ -45,10 +45,10 @@ const login = async (req, res) => {
 }
 
 const loginView = (req, res) => {
-    res.render("login", {});
+    res.render("login", { message: "" });
 };
 const signUpView = (req, res) => {
-    res.render("signUp", {});
+    res.render("signUp", {message: ""});
 };
 
 const logout = (req, res) => {

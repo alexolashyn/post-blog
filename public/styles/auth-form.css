@@ -54,6 +54,7 @@ body {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: #FF2F2F;
+    margin-bottom: 1rem;
 }
 
 .form__button {
@@ -79,6 +80,7 @@ body {
 
 .form__text {
     text-align: center;
+    margin: 0rem;
 }
 
 .form__link {
@@ -88,5 +90,27 @@ body {
 }
 
 .form__link:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 31.25rem;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error-message-link{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.error-message-link:hover {
     text-decoration: underline;
 }

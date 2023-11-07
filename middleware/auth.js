@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
         req.user = { id: payload.userId, username: payload.username };
         next();
     } catch (error) {
-        res.status(401).json({ message: 'Unauthorized' });
+        res.status(401).render('401-error', {});
     }
 }
 

@@ -5,7 +5,7 @@ const errorsHandler = (req, res) => {
         validationErrors[field] = req.validErrors.errors[field].message;
     }
 
-    res.status(400).json({ message: validationErrors });
+    res.status(400).render("signUp", { message: Object.values(validationErrors).join(', ') });
 }
 
 module.exports = errorsHandler;
