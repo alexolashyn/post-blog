@@ -37,7 +37,8 @@
     color: black;
 }
 
-#update-form{
+/* Form container styles */
+#update-form {
     width: 100%;
 }
 
@@ -49,50 +50,7 @@
     width: 100%;
 }
 
-.update-input {
-    background-color: #FFF6FF;
-    border: 1px solid #E8DFE8;
-    width: 80%;
-    padding: 1rem;
-    margin: 1rem 0;
-    font-size: 1.5rem;
-    font-family: 'Radley';
-    box-sizing: border-box;
-    outline: none;
-    transition: background 0.2s, border-color 0.2s;
-}
-
-.update-submit-button {
-    padding: 1rem 2rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: #955C8C;
-    width: 7rem;
-    margin-bottom: 1rem;
-}
-
-.update-submit-button:hover {
-    background: #8D4673;
-}
-
-.update-input:focus {
-    border-color: #8D4673;
-    background: #ffffff;
-}
-
-#create-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.create-input {
+.update-input, .create-input {
     background-color: #FFF6FF;
     border: 1px solid #E8DFE8;
     width: 80%;
@@ -106,7 +64,7 @@
     transition: background 0.2s, border-color 0.2s;
 }
 
-.create-submit-button {
+.update-submit-button, .create-submit-button {
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
@@ -119,11 +77,21 @@
     margin-bottom: 1rem;
 }
 
-.create-submit-button:hover {
+.update-submit-button:hover, .create-submit-button:hover {
     background: #8D4673;
 }
 
-.create-input:focus {
+.update-input:focus, .create-input:focus {
     border-color: #8D4673;
     background: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+    }
+    
+    .update-input, .create-input {
+        width: 100%;
+    }
 }

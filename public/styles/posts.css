@@ -12,6 +12,12 @@
     background-color: #FFF6FF;
     border: none;
     border-radius: 1rem;
+    color: #000;
+    transition: color 0.2s;
+}
+
+.header-button:hover {
+    color: #000;
 }
 
 .header-button-container {
@@ -79,6 +85,7 @@
     padding: 1rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
     background-color: #FFF6FF;
+    transition: box-shadow 0.2s;
 }
 
 .post-container:hover {
@@ -111,4 +118,11 @@
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .header-button {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
 }
